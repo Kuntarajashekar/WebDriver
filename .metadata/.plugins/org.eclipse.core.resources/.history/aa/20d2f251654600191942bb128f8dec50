@@ -1,0 +1,55 @@
+package webdriver;
+		import java.util.List;
+		import java.util.concurrent.TimeUnit;
+
+		import org.openqa.selenium.By;
+		import org.openqa.selenium.WebDriver;
+		import org.openqa.selenium.WebElement;
+		import org.openqa.selenium.firefox.FirefoxDriver;
+
+		public class RedBus{ 
+		
+			public static void main(String args[])
+			{
+				WebDriver driver=new FirefoxDriver();
+				driver.get("https://www.redbus.in/");
+				driver.manage().window().maximize();
+				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				driver.findElement(By.xpath(".//*[@id='src']")).sendKeys("hyderabad");
+				driver.findElement(By.xpath(".//*[@id='search']/div/div[1]/div/ul/li[1]")).click();
+				
+				
+				driver.findElement(By.xpath(".//*[@id='dest']")).sendKeys("guntur");
+				
+				driver.findElement(By.xpath(".//*[@id='search']/div/div[2]/div/ul/li[1]")).click();
+				
+				
+				
+				
+				driver.findElement(By.xpath(".//*[@id='onward_cal']")).click();
+				
+				 List<WebElement> dates = driver.findElements(By.xpath(".//*[@id='rb-calendar_onward_cal']/table/tbody/tr/td"));
+				 int totaldates=dates.size();
+				 for(WebElement date: dates)
+				 {
+					String datevalue =date.getText();
+					
+					
+					System.out.println(datevalue);
+					
+					
+					if(datevalue.contains("30"))
+					{
+						date.click();
+						
+						break;
+					}
+				 }
+			}
+
+		
+
+
+	}
+
+

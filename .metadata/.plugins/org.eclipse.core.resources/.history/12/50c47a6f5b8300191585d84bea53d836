@@ -1,0 +1,27 @@
+package automationtests;
+
+import java.util.Scanner;
+
+public class Palandrome {
+
+	public static void main(String[] args) {
+		
+		int sum=0,r=0,temp,n;
+		Scanner s=new Scanner(System.in);
+		System.out.println("Enter a Number:");
+		n=s.nextInt();
+		temp=n;
+		while(n>0) {
+			r=n%10;
+			sum=(sum*10)+r;
+			n=n/10;
+		}
+		if(temp==sum) {
+			System.out.println("Palandrome number");
+		}
+		else {
+			System.out.println("Not a palandrome");
+		}
+	}
+
+}

@@ -1,0 +1,34 @@
+package automationtests;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class sample {
+
+	WebDriver driver;
+	@BeforeTest
+	public void open() {
+		driver=new FirefoxDriver();
+		driver.get("http://www.axisbank.com/");
+		
+	}
+	@Test
+	public void run() {
+		Actions a=new Actions(driver);
+		WebElement ep=driver.findElement(By.linkText("Explore Products"));
+		a.contextClick(ep).build().perform();
+		
+	}
+	
+	@AfterTest
+	public void close() {
+		driver.close();
+	}
+			
+}
